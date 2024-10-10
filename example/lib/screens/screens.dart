@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/customer_sheet/customer_sheet_screen.dart';
+import 'package:stripe_example/screens/others/can_add_to_wallet_screen.dart';
+import 'package:stripe_example/screens/payment_sheet/express_checkout/express_checkout_element.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_element/payment_element.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_deffered_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
@@ -19,6 +21,7 @@ import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
 import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/google_pay_stripe_screen.dart';
+import 'package:stripe_example/screens/wallets/mobile_pay_create_payment_method_screen.dart';
 import 'package:stripe_example/screens/wallets/open_apple_pay_setup_screen.dart';
 import 'package:stripe_example/widgets/platform_icons.dart';
 
@@ -117,6 +120,13 @@ class Example extends StatelessWidget {
         Example(
           title: 'Web Payment Element',
           builder: (c) => PaymentElementExample(),
+          platformsSupported: [
+            DevicePlatform.web,
+          ],
+        ),
+        Example(
+          title: 'ExpressCheckout',
+          builder: (c) => ExpressCheckoutElementExample(),
           platformsSupported: [
             DevicePlatform.web,
           ],
@@ -224,6 +234,11 @@ class Example extends StatelessWidget {
           title: 'Google Pay - Pay Plugin',
           builder: (c) => GooglePayScreen(),
           platformsSupported: [DevicePlatform.android],
+        ),
+        Example(
+          title: 'Google/Apple Pay - Create payment method',
+          builder: (c) => MobilePayCreatePaymentMethodScreen(),
+          platformsSupported: [DevicePlatform.web],
         ),
       ],
     ),
@@ -366,6 +381,14 @@ class Example extends StatelessWidget {
           DevicePlatform.android,
           DevicePlatform.ios,
           DevicePlatform.web,
+        ],
+      ),
+      Example(
+        title: 'Can add card to wallet',
+        builder: (context) => CanAddToWalletScreen(),
+        platformsSupported: [
+          DevicePlatform.android,
+          DevicePlatform.ios,
         ],
       ),
     ]),

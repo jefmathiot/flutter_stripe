@@ -9,7 +9,8 @@ import 'package:web/web.dart' as web;
 
 import '../../flutter_stripe_web.dart';
 
-export 'package:stripe_js/stripe_api.dart' show PaymentElementLayout;
+export 'package:stripe_js/stripe_api.dart'
+    show PaymentElementLayout, ElementAppearance, ElementTheme;
 
 typedef PaymentElementTheme = js.ElementTheme;
 
@@ -120,9 +121,7 @@ class PaymentElementState extends State<PaymentElement> {
       ..id = 'payment-element'
       ..style.border = 'none'
       ..style.width = '100%'
-      ..style.height = '${height}'
-      ..style.overflow = 'scroll'
-      ..style.overflowX = 'hidden';
+      ..style.height = '${height}';
 
     elements = WebStripe.js.elements(createOptions());
     mutationObserver!.observe(
